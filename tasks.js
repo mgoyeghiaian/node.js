@@ -38,8 +38,13 @@ function onDataReceived(text) {
     quit();
   }
 
-  else if (text ===  'exit\n') {
+  else if (text === 'exit\n') {
     quit();
+  }
+
+  else if (text === 'help\n') {
+    help();
+
   }
 
   else if (text === 'hello\n') {
@@ -69,12 +74,6 @@ function unknownCommand(c) {
  *
  * @returns {void}
  */
-
-function help() {
-  console.log('Help!')
-  process.help()
-}
-
 function hello() {
   console.log('hello!')
 }
@@ -91,6 +90,14 @@ function quit() {
   process.exit();
 }
 
+
+
+function help() {
+  const help = ["hello", "quit", "exit"];
+  help.forEach(element => {
+    console.log(element);
+  });
+}
 
 // The following line starts the application
 startApp("Mgo Yeghiaian")
