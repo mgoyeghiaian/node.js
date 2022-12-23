@@ -92,8 +92,7 @@ function quit() {
 
 
 /**
- *  Showing  the all the possible commands
- *
+ *  Showing the all the possible commands
  * 
  *  @returns {void}
  */
