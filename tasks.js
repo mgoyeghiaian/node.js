@@ -91,7 +91,12 @@ function quit() {
 }
 
 
-
+/**
+ *  Showing  the all the possible commands
+ *
+ * 
+ *  @returns {void}
+ */
 function help() {
   const help = ["hello", "quit", "exit"];
   help.forEach(element => {
