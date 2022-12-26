@@ -33,28 +33,16 @@ function startApp(name) {
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+
+const List = [hello, exit, help, quit, batata,];
 function onDataReceived(text) {
-  if (text === 'quit\n') {
-    quit();
-  }
+  text = text.trim();
 
-  else if (text === 'exit\n') {
-    quit();
-  }
-
-  else if (text === 'help\n') {
-    help();
-
-  }
-
-  else if (text === 'hello\n') {
-    hello();
-  }
-
-
-  else {
-    unknownCommand(text);
-  }
+  List.forEach(function (input) {
+    if (text.startsWith(input.name)) {
+      input(text);
+    }
+  });
 }
 
 
@@ -74,20 +62,21 @@ function unknownCommand(c) {
  *
  * @returns {void}
  */
-function hello() {
-  console.log('hello!')
+
+function batata() {
+  console.log(
+    "--------------------\n" +
+    "batata!\n" +
+    "-----------------------")
 }
 
 
-
-/**
- * Exits the application
- *
- * @returns {void}
- */
-function quit() {
-  console.log('Quitting now, goodbye!')
-  process.exit();
+function hello(text) {
+  console.log(
+    "--------------------\n" +
+    `Hello${text.substring(5)}! \n` +
+    "-----------------------"
+  );
 }
 
 
@@ -97,11 +86,38 @@ function quit() {
  *  @returns {void}
  */
 function help() {
-  const help = ["hello", "quit", "exit"];
-  help.forEach(element => {
-    console.log(element);
-  });
+
+  console.log(
+    "Commands You Can Use!:\n\n" +
+    "--------------------\n" +
+    " help. \n" +
+    " hello.\n" +
+    " quit or exit.\n" +
+    "-------------------------"
+  );
 }
+
+
+/**
+ * Exits the application
+ *
+ * @returns {void}
+ */
+
+function quit() {
+  console.log('Quitting now, goodbye!')
+  process.exit();
+}
+
+function exit() {
+  console.log('quitting now, goodbye!')
+  process.exit();
+}
+
+
+
+
+
 
 // The following line starts the application
 startApp("Mgo Yeghiaian")
