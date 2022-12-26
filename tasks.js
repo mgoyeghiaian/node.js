@@ -39,7 +39,7 @@ function onDataReceived(text) {
   }
 
   else if (text === 'exit\n') {
-    quit();
+    exit();
   }
 
   else if (text === 'help\n') {
@@ -90,17 +90,27 @@ function quit() {
   process.exit();
 }
 
+function exit() {
+  console.log('Quitting now, goodbye!')
+  process.exit();
+}
+
 
 /**
  *  Showing the all the possible commands
  * 
  *  @returns {void}
  */
+
 function help() {
-  const help = ["hello", "quit", "exit"];
-  help.forEach(element => {
-    console.log(element);
-  });
+  console.log(
+    "Commands You Can Use!:\n\n" +
+    "--------------------\n" +
+    " help. \n" +
+    " hello.\n" +
+    " quit or exit.\n" +
+    "-------------------------"
+  );
 }
 
 // The following line starts the application
