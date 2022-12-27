@@ -78,7 +78,9 @@ function hello(text) {
     "-----------------------"
   );
 }
-
+/**
+ * To Create a list.
+ */
 const tasks = [];
 
 function list() {
@@ -92,14 +94,24 @@ function list() {
   console.log("--------------------------")
 }
 
-function add(task) {
-  tasks.push(task.substring(4));
-  console.log(`Added "${task.substring(4)}" to the task list.`);
+
+/**
+ * 
+ * to add element into list
+ */
+function add(taskA) {
+  tasks.push(taskA.substring(4));
+  console.log(`Added "${taskA.substring(4)}" to the task list.`);
 
 }
 
-function remove(task) {
-  const i = parseInt(task.substring(7)) - 1;
+
+/**
+ * 
+ * to remove element from the list 
+ */
+function remove(taskR) {
+  const i = parseInt(taskR.substring(7)) - 1;
   if (i < 0 || i >= tasks.length) {
 
     console.log(`Task ${i + 1} not found. `);
@@ -128,9 +140,12 @@ function help() {
   console.log(
     "Commands You Can Use!:\n\n" +
     "--------------------\n" +
-    "1. help. To list all possible commands. \n" +
-    "2. hello. to say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will ritern 'hello x!')\n" +
-    "3. quit or exit. To quit or exit the application.\n" +
+    "1. help: To list all possible commands. \n" +
+    "2. hello: To say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will ritern 'hello x!')\n" +
+    "3. quit or exit: To quit or exit the application.\n" +
+    "4. list: To show the list. \n" +
+    "5. add : To add elements into the list. \n" +
+    "6. remove: To remove elements from the list.\n" +
     "-------------------------"
   );
 }
