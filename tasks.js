@@ -34,7 +34,7 @@ function startApp(name) {
  * @returns {void}
  */
 
-const List = [hello, exit, help, quit, batata, list,];
+const List = [hello, exit, help, quit, batata, list, add,];
 function onDataReceived(text) {
   text = text.trim();
 
@@ -79,7 +79,7 @@ function hello(text) {
   );
 }
 
-const tasks = ["task1", "task2", "task3", "task4"];
+const tasks = [];
 
 function list() {
   console.log("Here are your current tasks: \n" +
@@ -92,6 +92,11 @@ function list() {
   console.log("--------------------------")
 }
 
+function add(task) {
+  tasks.push(task.substring(4));
+  console.log(`Added "${task}" to the task list.`);
+
+}
 
 /**
  *  Showing the all the possible commands
