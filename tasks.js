@@ -112,8 +112,15 @@ function add(taskA) {
  */
 function remove(taskR) {
   const i = parseInt(taskR.substring(7)) - 1;
+  
+  if (i < 0 || i >= tasks.length) {
 
-  if (isNaN(i)) {
+    console.log(`Task ${i + 1} not found. `);
+
+  }
+
+
+  else if (isNaN(i)) {
     tasks.pop(i, 1)
     console.log(`Last task removed!`)
 
