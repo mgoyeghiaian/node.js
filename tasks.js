@@ -34,7 +34,7 @@ function startApp(name) {
  * @returns {void}
  */
 
-const List = [hello, exit, help, quit, batata,];
+const List = [hello, exit, help, quit, batata, list,];
 function onDataReceived(text) {
   text = text.trim();
 
@@ -77,6 +77,19 @@ function hello(text) {
     `Hello${text.substring(5)}! \n` +
     "-----------------------"
   );
+}
+
+const tasks = ["task1", "task2", "task3", "task4"];
+
+function list() {
+  console.log("Here are your current tasks: \n" +
+    '-----------------');
+  for (let i = 0; i < tasks.length; i++) {
+    console.log(
+      ` ${i + 1}. ${tasks[i]}`
+    )
+  }
+  console.log("--------------------------")
 }
 
 
