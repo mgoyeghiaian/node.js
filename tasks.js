@@ -112,12 +112,8 @@ function add(taskA) {
  */
 function remove(taskR) {
   const i = parseInt(taskR.substring(7)) - 1;
-  if (i < 0 || i >= tasks.length) {
 
-    console.log(`Task ${i + 1} not found. `);
-
-  }
-  else if (isNaN(i)) {
+  if (isNaN(i)) {
     tasks.pop(i, 1)
     console.log(`Last task removed!`)
 
@@ -143,9 +139,7 @@ function help() {
     "1. help: To list all possible commands. \n" +
     "2. hello: To say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will ritern 'hello x!')\n" +
     "3. quit or exit: To quit or exit the application.\n" +
-    "4. list: To show the list. \n" +
-    "5. add : To add elements into the list. \n" +
-    "6. remove: To remove elements from the list.\n" +
+
     "-------------------------"
   );
 }
