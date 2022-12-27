@@ -34,7 +34,7 @@ function startApp(name) {
  * @returns {void}
  */
 
-const List = [hello, exit, help, quit, batata, list, add,];
+const List = [hello, exit, help, quit, batata, list, add, remove,];
 function onDataReceived(text) {
   text = text.trim();
 
@@ -94,9 +94,29 @@ function list() {
 
 function add(task) {
   tasks.push(task.substring(4));
-  console.log(`Added "${task}" to the task list.`);
+  console.log(`Added "${task.substring(4)}" to the task list.`);
 
 }
+
+function remove(task) {
+  const i = parseInt(task.substring(7)) - 1;
+  if (i < 0 || i >= tasks.length) {
+
+    console.log(`Task ${i + 1} not found. `);
+
+  }
+  else if (isNaN(i)) {
+    tasks.pop(i, 1)
+    console.log(`Last task removed!`)
+
+  }
+
+  else {
+    tasks.splice(i, 1)
+    console.log(`Task ${i + 1} removed!`);
+  }
+}
+
 
 /**
  *  Showing the all the possible commands
