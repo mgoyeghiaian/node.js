@@ -90,9 +90,9 @@ function help() {
   console.log(
     "Commands You Can Use!:\n\n" +
     "--------------------\n" +
-    " help. \n" +
-    " hello.\n" +
-    " quit or exit.\n" +
+    "1. help. To list all possible commands. \n" +
+    "2. hello. to say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will ritern 'hello x!')\n" +
+    "3. quit or exit. To quit or exit the application.\n" +
     "-------------------------"
   );
 }
@@ -113,10 +113,6 @@ function exit() {
   console.log('quitting now, goodbye!')
   process.exit();
 }
-
-
-
-
 
 
 // The following line starts the application
