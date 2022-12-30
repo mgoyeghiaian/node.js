@@ -171,6 +171,11 @@ function edit(text) {
     }
   }
 }
+
+/**
+ *  to check element from the list. 
+ * 
+ */
 function check(text) {
   const i = parseInt(text.substring(6)) - 1;
   if (text === "check") {
@@ -189,7 +194,10 @@ function check(text) {
       "-------------------------------");
   }
 }
-
+/**
+ *  to Uncheck element from the list. 
+ * 
+ */
 function uncheck(text) {
   const i = parseInt(text.substring(8)) - 1;
   if (isNaN(i) || i < 0 || i >= tasks.length) {
@@ -221,10 +229,12 @@ function help() {
     "1. help: To list all possible commands. \n" +
     "2. hello: To say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will ritern 'hello x!')\n" +
     "3. quit or exit: To quit or exit the application.\n" +
-    "4. list: To show the list. \n" +
-    "5. add : To add elements into the list. \n" +
+    "4. list: To show tadhe list. \n" +
+    "5. add :  To add elements into the list. \n" +
     "6. remove: To remove elements from the list.\n" +
-    "7. edit : To edit elements in the list. \n" +
+    "7. edit :  To edit elements in the list. \n" +
+    "8. check : Check the task  \n" +
+    "9. uncheck:  Uncheckthe task   \n" +
     "-------------------------"
   );
 }
