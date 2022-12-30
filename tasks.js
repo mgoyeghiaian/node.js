@@ -120,20 +120,23 @@ function remove(taskR) {
 
   if (i < 0 || i >= tasks.length) {
 
-    console.log(`ERROR: Task ${i + 1} not found! `);
+    console.error(`ERROR: Task ${i + 1} not found! \n` +
+      "---------------------------");
 
   }
 
 
   else if (isNaN(i)) {
     tasks.pop(i, 1)
-    console.log(`Last task removed!`)
+    console.log(`Last task removed! \n` +
+      "------------------------")
 
   }
 
   else {
     tasks.splice(i, 1)
-    console.log(`Task ${i + 1} removed!`);
+    console.log(`Task ${i + 1} removed! \n` +
+      "------------------------");
   }
 }
 
@@ -144,20 +147,25 @@ function remove(taskR) {
 function edit(text) {
 
   if (text === 'edit') {
-    console.log('ERROR: Choose a task to edit!')
+    console.error('ERROR: Choose a task to edit! \n' +
+      "---------------------")
 
   }
   else {
     const parts = text.split(" ");
     const i = parseInt(parts[1]) - 1;
 
-    if (tasks[i] = parts.slice(2).join(" ")) {
+    if (i < 0 || i >= tasks.length) {
+      console.error("ERROR: Please enter a valid task number.\n" +
+        "---------------------");
+    }
+    else if (tasks[i] = parts.slice(2).join(" ")) {
       console.log(`Task ${i + 1} edited! \n` +
         '----------------------');
     }
 
-    else if (tasks[tasks.length - 1] = text.substring(5)
-    ) {
+    else {
+      tasks[tasks.length - 1] = text.substring(5)
       console.log("last task edited.\n" +
         '------------------------------')
     }
