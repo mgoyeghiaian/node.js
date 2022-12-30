@@ -173,10 +173,16 @@ function edit(text) {
 }
 function check(text) {
   const i = parseInt(text.substring(6)) - 1;
-  if (isNaN(i) || i < 0 || i >= tasks.length) {
+  if (text === "check") {
     console.error("ERROR: Please enter a valid task number! \n " +
       "-------------------------------");
-  } else {
+  } 
+  else if (i < 0 || i >= tasks.length){
+    console.error("ERROR: Please enter a valid task number! \n " +
+    "-------------------------------");
+  }
+  
+  else {
     let tick = "[\u2714] "
     tasks[i] = (tick + `${tasks[i]} `);
     console.log(`Task ${i + 1} checked! \n` +
