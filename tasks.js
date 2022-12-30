@@ -34,7 +34,7 @@ function startApp(name) {
  * @returns {void}
  */
 
-const List = [hello, exit, help, quit, batata, list, add, remove, edit, check];
+const List = [hello, exit, help, quit, batata, list, add, remove, edit, check, uncheck];
 function onDataReceived(text) {
   text = text.trim();
 
@@ -174,21 +174,38 @@ function edit(text) {
 function check(text) {
   const i = parseInt(text.substring(6)) - 1;
   if (text === "check") {
-    console.error("ERROR: Please enter a valid task number! \n " +
+    console.error("Error: You didn't enter the number of task! \n " +
       "-------------------------------");
-  } 
-  else if (i < 0 || i >= tasks.length){
-    console.error("ERROR: Please enter a valid task number! \n " +
-    "-------------------------------");
   }
-  
+  else if (i < 0 || i >= tasks.length) {
+    console.error("Error: the number entered does not exist \n " +
+      "-------------------------------");
+  }
+
   else {
-    let tick = "[\u2714] "
+    let tick = "\u2714 "
     tasks[i] = (tick + `${tasks[i]} `);
     console.log(`Task ${i + 1} checked! \n` +
       "-------------------------------");
   }
 }
+
+function uncheck(text) {
+  const i = parseInt(text.substring(8)) - 1;
+  if (isNaN(i) || i < 0 || i >= tasks.length) {
+    console.error("Error: Please enter a valid task number! \n" +
+      "--------------------------");
+  } else {
+    if (tasks[i].startsWith("\u2714 ")) {
+      tasks[i] = tasks[i].substring(2, tasks[i].length);
+      console.log(`Task ${i + 1} unchecked! \n` +
+        "----------------------");
+    } else {
+      console.log("This task is already unchecked. \n" + "-----------------------");
+    }
+  }
+}
+
 
 
 /**
