@@ -34,7 +34,7 @@ function startApp(name) {
  * @returns {void}
  */
 
-const List = [hello, exit, help, quit, batata, list, add, remove,];
+const List = [hello, exit, help, quit, batata, list, add, remove, edit,];
 function onDataReceived(text) {
   text = text.trim();
 
@@ -72,12 +72,15 @@ function batata() {
 
 
 function hello(text) {
-  console.log(
-    "--------------------\n" +
-    `Hello${text.substring(5)}! \n` +
-    "-----------------------"
-  );
+
+  if (text.length > 1) {
+    console.log(text.trim() + '!')
+  }
+  else {
+    console.log("hello!")
+  }
 }
+
 /**
  * To Create a list.
  */
@@ -101,7 +104,9 @@ function list() {
  */
 function add(taskA) {
   tasks.push(taskA.substring(4));
-  console.log(`Added "${taskA.substring(4)}" to the task list.`);
+  console.log("------------------------ \n" +
+    `Added "${taskA.substring(4)}" to the task list. \n` +
+    "--------------------------");
 
 }
 
@@ -112,10 +117,10 @@ function add(taskA) {
  */
 function remove(taskR) {
   const i = parseInt(taskR.substring(7)) - 1;
-  
+
   if (i < 0 || i >= tasks.length) {
 
-    console.log(`Task ${i + 1} not found. `);
+    console.log(`ERROR: Task ${i + 1} not found! `);
 
   }
 
@@ -131,6 +136,34 @@ function remove(taskR) {
     console.log(`Task ${i + 1} removed!`);
   }
 }
+
+/**
+ *  to edit element from the list  
+ */
+
+function edit(text) {
+
+  if (text === 'edit') {
+    console.log('ERROR: Choose a task to edit!')
+
+  }
+  else {
+    const parts = text.split(" ");
+    const i = parseInt(parts[1]) - 1;
+
+    if (tasks[i] = parts.slice(2).join(" ")) {
+      console.log(`Task ${i + 1} edited! \n` +
+        '----------------------');
+    }
+
+    else if (tasks[tasks.length - 1] = text.substring(5)
+    ) {
+      console.log("last task edited.\n" +
+        '------------------------------')
+    }
+  }
+}
+
 
 
 /**
