@@ -182,6 +182,7 @@ function help() {
     "4. list: To show the list. \n" +
     "5. add : To add elements into the list. \n" +
     "6. remove: To remove elements from the list.\n" +
+    "7. edit : To edit elements in the list. \n" +
     "-------------------------"
   );
 }
