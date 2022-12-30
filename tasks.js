@@ -34,7 +34,7 @@ function startApp(name) {
  * @returns {void}
  */
 
-const List = [hello, exit, help, quit, batata, list, add, remove, edit,];
+const List = [hello, exit, help, quit, batata, list, add, remove, edit, check];
 function onDataReceived(text) {
   text = text.trim();
 
@@ -120,20 +120,23 @@ function remove(taskR) {
 
   if (i < 0 || i >= tasks.length) {
 
-    console.log(`ERROR: Task ${i + 1} not found! `);
+    console.error(`ERROR: Task ${i + 1} not found! \n` +
+      "---------------------------");
 
   }
 
 
   else if (isNaN(i)) {
     tasks.pop(i, 1)
-    console.log(`Last task removed!`)
+    console.log(`Last task removed! \n` +
+      "------------------------")
 
   }
 
   else {
     tasks.splice(i, 1)
-    console.log(`Task ${i + 1} removed!`);
+    console.log(`Task ${i + 1} removed! \n` +
+      "------------------------");
   }
 }
 
@@ -144,26 +147,42 @@ function remove(taskR) {
 function edit(text) {
 
   if (text === 'edit') {
-    console.log('ERROR: Choose a task to edit!')
+    console.error('ERROR: Choose a task to edit! \n' +
+      "---------------------")
 
   }
   else {
     const parts = text.split(" ");
     const i = parseInt(parts[1]) - 1;
 
-    if (tasks[i] = parts.slice(2).join(" ")) {
+    if (i < 0 || i >= tasks.length) {
+      console.error("ERROR: Please enter a valid task number.\n" +
+        "---------------------");
+    }
+    else if (tasks[i] = parts.slice(2).join(" ")) {
       console.log(`Task ${i + 1} edited! \n` +
         '----------------------');
     }
 
-    else if (tasks[tasks.length - 1] = text.substring(5)
-    ) {
+    else {
+      tasks[tasks.length - 1] = text.substring(5)
       console.log("last task edited.\n" +
         '------------------------------')
     }
   }
 }
-
+function check(text) {
+  const i = parseInt(text.substring(6)) - 1;
+  if (isNaN(i) || i < 0 || i >= tasks.length) {
+    console.error("ERROR: Please enter a valid task number! \n " +
+      "-------------------------------");
+  } else {
+    let tick = "[\u2714] "
+    tasks[i] = (tick + `${tasks[i]} `);
+    console.log(`Task ${i + 1} checked! \n` +
+      "-------------------------------");
+  }
+}
 
 
 /**
@@ -182,6 +201,7 @@ function help() {
     "4. list: To show the list. \n" +
     "5. add : To add elements into the list. \n" +
     "6. remove: To remove elements from the list.\n" +
+    "7. edit : To edit elements in the list. \n" +
     "-------------------------"
   );
 }
