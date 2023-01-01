@@ -17,7 +17,6 @@ function startApp(name) {
   console.log("--------------------")
 }
 
-
 /**
  * Decides what to do depending on the data that was received
  * This function receives the input sent by the user.
@@ -84,7 +83,13 @@ function hello(text) {
 /**
  * To Create a list.
  */
-const tasks = [];
+
+
+const fs = require('fs');
+const fileData = fs.readFileSync(`database.json`,)
+let tasks = JSON.parse(fileData);
+
+
 
 function list() {
   console.log("Here are your current tasks: \n" +
@@ -95,6 +100,11 @@ function list() {
     )
   }
   console.log("--------------------------")
+  const tasksJson = JSON.stringify(tasks);
+  process.on("exit", () => {
+    fs.writeFileSync("database.json", tasksJson);
+  });
+
 }
 
 
@@ -102,13 +112,15 @@ function list() {
  * 
  * to add element into list
  */
-function add(taskA) {
-  tasks.push(taskA.substring(4));
-  console.log("------------------------ \n" +
-    `Added "${taskA.substring(4)}" to the task list. \n` +
-    "--------------------------");
+function add(text) {
+  const taskA = text.substring(4)
+  tasks.push(taskA)
 
+  console.log("------------------------ \n" +
+    `Added "${taskA}" to the task list. \n` +
+    "--------------------------");
 }
+
 
 
 /**
@@ -227,14 +239,14 @@ function help() {
     "Commands You Can Use!:\n\n" +
     "--------------------\n" +
     "1. help: To list all possible commands. \n" +
-    "2. hello: To say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will ritern 'hello x!')\n" +
+    "2. hello: To say hello and if you use it with your name it will greets you with your name (ex: (hello 'x') will return 'hello x!')\n" +
     "3. quit or exit: To quit or exit the application.\n" +
-    "4. list: To show tadhe list. \n" +
+    "4. list: To show table list. \n" +
     "5. add :  To add elements into the list. \n" +
     "6. remove: To remove elements from the list.\n" +
     "7. edit :  To edit elements in the list. \n" +
     "8. check : Check the task  \n" +
-    "9. uncheck:  Uncheckthe task   \n" +
+    "9. uncheck:  Uncheck the task   \n" +
     "-------------------------"
   );
 }
@@ -246,6 +258,7 @@ function help() {
  * @returns {void}
  */
 
+
 function quit() {
   console.log('Quitting now, goodbye!')
   process.exit();
@@ -255,7 +268,6 @@ function exit() {
   console.log('quitting now, goodbye!')
   process.exit();
 }
-
 
 // The following line starts the application
 startApp("Mgo Yeghiaian")
