@@ -86,7 +86,8 @@ function hello(text) {
 
 
 const fs = require('fs');
-const fileData = fs.readFileSync(`database.json`,)
+const fileName = process.argv[2] || "database.json";
+const fileData = fs.readFileSync(fileName)
 let tasks = JSON.parse(fileData);
 
 
@@ -102,7 +103,7 @@ function list() {
   console.log("--------------------------")
   const tasksJson = JSON.stringify(tasks);
   process.on("exit", () => {
-    fs.writeFileSync("database.json", tasksJson);
+    fs.writeFileSync(fileName, tasksJson);
   });
 
 }
